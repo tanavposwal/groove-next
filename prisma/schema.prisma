@@ -13,8 +13,7 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  streams       Stream[]  @relation("user")
-  upvotes       Upvote[]
+  queue         Queue[]  @relation("user")
   accounts      Account[]
   sessions      Session[]
 
@@ -61,35 +60,13 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-model Stream {
+model Queue {
   id            String         @id @default(uuid())
   url           String
-  extractedId   String
   title         String         @default("")
-  smallImg      String         @default("")
-  bigImg        String         @default("")
-  active        Boolean        @default(true)
-  played        Boolean        @default(false)
-  playedTs      DateTime?
-  createAt      DateTime       @default(now())
-  upvotes       Upvote[]
+  ytid          String
+  thumbnail     String
+  seconds       Int
   userId        String
   user          User           @relation(fields: [userId], references: [id], name: "user")
-  currentStream CurrentStream?
-}
-
-model CurrentStream {
-  userId   String  @id
-  streamId String? @unique
-  stream   Stream? @relation(fields: [streamId], references: [id])
-}
-
-model Upvote {
-  id       String @id @default(uuid())
-  userId   String
-  streamId String
-  user     User   @relation(fields: [userId], references: [id])
-  stream   Stream @relation(fields: [streamId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, streamId])
 }
