@@ -16,6 +16,7 @@ export default function MiniWindows() {
   useEffect(() => {
     if (playerRef.current) {
       playerRef.current.loadVideoById(ytid);
+      playerRef.current.playVideo()
     }
   }, [ytid])
 
