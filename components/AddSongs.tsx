@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import YouTube from "react-youtube";
-import { prisma } from "@/prisma";
-import yts from "yt-search"
 import { addSongAction } from "@/actions/addsong";
 
 function getYouTubeVideoID(url: string): string | null {
@@ -27,7 +25,7 @@ export default function Adder({ userID }: { userID: string }) {
   };
 
   return (
-    <div className="border rounded-md shadow m-3 ml-0 p-4 gap-4 flex flex-col max-w-[40rem] h-fit">
+    <div className="border rounded-md shadow ml-0 p-4 gap-4 flex flex-col max-w-[40rem] h-fit">
       <h3 className="text-xl font-bold">Add Songs</h3>
       <div>
         <form className="flex gap-2" action={addSongAction}>
@@ -42,8 +40,8 @@ export default function Adder({ userID }: { userID: string }) {
         </form>
       </div>
       {url && (
-        <div className="rounded-lg overflow-hidden w-fit">
-          <YouTube videoId={getYouTubeVideoID(url)} opts={opts} />
+        <div className="rounded-lg overflow-hidden w-fit border">
+          <img className="h-40" src={`https://img.youtube.com/vi/${getYouTubeVideoID(url)}/hqdefault.jpg`} alt="" />
         </div>
       )}
     </div>

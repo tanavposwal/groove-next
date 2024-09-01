@@ -16,7 +16,7 @@ export default async function Navbar() {
               await signOut();
             }}
           >
-            <Button type="submit">Sign out</Button>
+            <Button type="submit" variant="ghost">Sign out</Button>
           </form>
         </div>
       ) : (
