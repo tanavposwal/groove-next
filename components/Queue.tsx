@@ -22,10 +22,10 @@ export default async function Queue() {
       </div>
       <ul className="flex flex-col gap-3">
         {queue.map((song) => (
-          <li className="flex h-20">
+          <li className="flex h-28" key={song.id}>
             <img src={song.thumbnail} className="h-full rounded-md border" />
             <div className="ml-3 flex flex-col items-start gap-1 justify-between">
-              <h4 className="text-sm font-semibold">{song.title}</h4>
+              <h4 className="text-md font-semibold">{song.title}</h4>
               <Player id={song.ytid} />
             </div>
           </li>

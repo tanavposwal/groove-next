@@ -5,7 +5,7 @@ import { Music, Users, Headphones } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home() {
-  const session = await auth()
+  const session = await auth();
 
   return (
     <main className="min-h-screen">
@@ -13,20 +13,21 @@ export default async function Home() {
         <div className="text-white text-2xl font-extrabold">groove</div>
         {session?.user ? (
           <div className="flex gap-3 items-center">
-          <img className="rounded-full h-9" src={session.user.image!} />
-          <Button asChild><Link href="/dashboard">Dashboard</Link></Button>
-        </div>
+            <img className="rounded-full h-9" src={session.user.image!} />
+            <Button asChild>
+              <Link href="/dashboard">Dashboard</Link>
+            </Button>
+          </div>
         ) : (
-        <form 
-          action={async () => {
-            "use server";
-            await signIn("google", { redirectTo: "/dashboard" });
-          }}
-        >
-          <Button type="submit">Sign in</Button>
-        </form>
+          <form
+            action={async () => {
+              "use server";
+              await signIn("google", { redirectTo: "/dashboard" });
+            }}
+          >
+            <Button type="submit">Sign in</Button>
+          </form>
         )}
-        
       </header>
 
       <main className="container mx-auto px-4 py-16">

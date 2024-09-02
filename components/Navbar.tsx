@@ -5,7 +5,7 @@ export default async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="py-4 px-8 border-b shadow-sm flex justify-between md:px-16">
+    <nav className="py-4 px-8 border-b shadow-sm flex justify-between md:px-16 sticky top-0 bg-background z-50">
       <h2 className="text-2xl font-extrabold">groove</h2>
       {session?.user ? (
         <div className="flex gap-2 items-center">

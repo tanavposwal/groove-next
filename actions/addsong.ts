@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/prisma";
+import { revalidatePath } from "next/cache";
 // @ts-ignore
 import youtubesearchapi from "youtube-search-api";
 
@@ -24,4 +25,6 @@ export async function addSongAction(formData: FormData) {
         seconds: 0,
         },
     });
+    formData.set("url","")
+    revalidatePath('/dashboard')
 }
