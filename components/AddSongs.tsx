@@ -25,7 +25,7 @@ export default function Adder({ userID }: { userID: string }) {
   };
 
   return (
-    <div className="border rounded-md shadow ml-0 p-4 gap-4 flex flex-col h-fit w-fit">
+    <div className="border rounded-md shadow ml-0 p-4 gap-4 flex flex-col h-fit min-w-fit">
       <h3 className="text-xl font-bold">Add Songs</h3>
       <div>
         <form className="flex gap-2" action={addSongAction}>
