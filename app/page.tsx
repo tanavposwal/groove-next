@@ -15,7 +15,7 @@ export default async function Home() {
           <div className="flex gap-3 items-center">
             <img className="rounded-full h-9" src={session.user.image!} />
             <Button asChild>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/dashboard">Home</Link>
             </Button>
           </div>
         ) : (

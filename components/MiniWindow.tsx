@@ -15,7 +15,7 @@ export default function MiniWindows() {
   const onReady = (event: any) => {
     playerRef.current = event.target;
     playerRef.current.setPlaybackQuality("small");
-    playerRef.current.startVideo();
+    playerRef.current.playVideo();
   };
 
   useEffect(() => {
@@ -29,13 +29,14 @@ export default function MiniWindows() {
     height: "225",
     width: "400",
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
   return (
-    <div className="rounded-t-lg md:rounded-lg border overflow-hidden flex flex-col items-center justify-center h-fit">
-
+    <div className="rounded-t-lg md:rounded-lg border overflow-hidden flex flex-col items-center justify-center h-fit shadow-2xl">
+      {/* for playing playlist */}
+      {/* https://www.youtube.com/embed/VIDEO_ID_1?playlist=VIDEO_ID_2,VIDEO_ID_3,VIDEO_ID_4&autoplay=1 */}
       <div className={"md:flex transition-transform ease-in-out md:translate-y-0 opacity-100 " + (open ? 'translate-y-0 opacity-100' : 'translate-y-full h-0')}>
         <YouTube videoId={ytid} opts={opts} onReady={onReady} />
       </div>

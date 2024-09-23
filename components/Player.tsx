@@ -21,10 +21,10 @@ export default function Player({ id, userId }: { id: string; userId: string }) {
         {id == ytid ? "Playing" : "Play"}
       </Button>
       <Button variant="ghost" size="icon">
-        <ArrowBigUp className="scale-90 stroke-1 opacity-70 hover:opacity-100" />
+        <ArrowBigUp className="scale-90 stroke-2 opacity-70 hover:opacity-100" />
       </Button>
       <Button variant="ghost" size="icon" type="submit">
-        <ArrowBigDown className="scale-90 stroke-1 opacity-70 hover:opacity-100" />
+        <ArrowBigDown className="scale-90 stroke-2 opacity-70 hover:opacity-100" />
       </Button>
       <DeleteButton id={id} userId={userId} />
     </div>

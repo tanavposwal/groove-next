@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import YouTube from "react-youtube";
 import { addSongAction } from "@/actions/addsong";
+import { ChevronUpIcon } from "lucide-react";
 
 function getYouTubeVideoID(url: string): string | null {
   const regex =
@@ -15,6 +15,7 @@ function getYouTubeVideoID(url: string): string | null {
 
 export default function Adder({ userID }: { userID: string }) {
   const [url, setUrl] = useState<string | null>();
+  const [open, setOpen] = useState(false);
 
   const opts = {
     height: "225",
@@ -25,23 +26,50 @@ export default function Adder({ userID }: { userID: string }) {
   };
 
   return (
-    <div className="border rounded-md shadow ml-0 p-4 gap-4 flex flex-col h-fit min-w-fit">
-      <h3 className="text-xl font-bold">Add Songs</h3>
-      <div>
-        <form className="flex gap-2" action={addSongAction}>
-          <Input
-            placeholder="Paste yt link here"
-            value={url!}
-            name="url"
-            onChange={(e) => setUrl(e.target.value)}
+    <div className="border rounded-md shadow ml-0 p-4 gap-4 flex flex-col h-fit min-w-64">
+      <div className="flex w-full justify-between items-center">
+        <h3 className="text-xl font-bold">Add Songs</h3>
+        <Button
+          className="group"
+          variant="ghost"
+          size="icon"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          <ChevronUpIcon
+            className={
+              (open ? "rotate-180" : "rotate-0") +
+              " opacity-60 group-hover:opacity-100 transition-all"
+            }
           />
-          <input type="text" defaultValue={userID} hidden name="userID" />
-          <Button type="submit">Add to Queue</Button>
-        </form>
+        </Button>
       </div>
-      {url && (
-        <div className="rounded-lg overflow-hidden w-fit border">
-          <img className="h-40" src={`https://img.youtube.com/vi/${getYouTubeVideoID(url)}/hqdefault.jpg`} alt="" />
+      {open && (
+        <div>
+          <div>
+            <form className="flex gap-2" action={addSongAction}>
+              <Input
+                placeholder="Paste yt link here"
+                value={url!}
+                name="url"
+                onChange={(e) => setUrl(e.target.value)}
+              />
+              <input type="text" defaultValue={userID} hidden name="userID" />
+              <Button type="submit">Add to Queue</Button>
+            </form>
+          </div>
+          {url && (
+            <div className="rounded-lg overflow-hidden w-fit border">
+              <img
+                className="h-40"
+                src={`https://img.youtube.com/vi/${getYouTubeVideoID(
+                  url
+                )}/hqdefault.jpg`}
+                alt=""
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -11,6 +11,7 @@ export default async function Navbar() {
         <div className="flex gap-2 items-center">
           <img className="rounded-full h-9" src={session.user.image!} />
           <form
+            className="sm:flex hidden"
             action={async () => {
               "use server";
               await signOut();

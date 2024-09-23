@@ -24,12 +24,12 @@ export default async function Queue() {
           </Button>
         </div>
       </div>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 w-full">
         {queue.map((song) => (
-          <li className="flex h-28" key={song.id}>
-            <img src={song.thumbnail} className="h-full rounded-md border" />
-            <div className="ml-3 flex flex-col items-start gap-1 justify-between">
-              <h4 className="text-md font-semibold">{song.title}</h4>
+          <li className="flex sm:h-28 h-20" key={song.id}>
+            <img src={song.thumbnail} className="rounded-md border h-full aspect-video" />
+            <div className="ml-3 flex flex-col items-start sm:gap-1 gap-0 justify-between">
+              <h4 className="sm:text-lg sm:font-semibold text-xs">{song.title}</h4>
               <Player id={song.ytid} userId={session?.user?.id!} />
             </div>
           </li>

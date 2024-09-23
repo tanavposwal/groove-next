@@ -10,7 +10,7 @@ export default async function Dashboard() {
   return (
     <main>
       <Navbar />
-      <section className="flex gap-3 max-w-screen-xl mx-auto flex-col md:flex-row-reverse p-4">
+      <section className="flex gap-3 max-w-screen-xl mx-auto flex-col md:flex-row-reverse sm:p-4 p-2 pb-20">
         <div className="flex flex-col gap-3">
           <Adder userID={session?.user?.id!} />
           <div className="fixed bottom-0 right-0 md:flex z-50">
