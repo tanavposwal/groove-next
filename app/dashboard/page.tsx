@@ -10,14 +10,16 @@ export default async function Dashboard() {
   return (
     <main>
       <Navbar />
-      <section className="flex gap-3 max-w-screen-xl mx-auto flex-col md:flex-row-reverse sm:p-4 p-2 pb-20">
-        <div className="flex flex-col gap-3">
+      <section className="flex max-w-4xl mx-auto flex-row h-screen">
+        <div className="flex flex-col gap-3 h-full border-r px-3">
           <Adder userID={session?.user?.id!} />
-          <div className="fixed bottom-0 right-0 md:flex z-50">
-            <MiniWindows />
-          </div>
         </div>
-        <Queue />
+        <div className="border-l px-3">
+          <Queue />
+        </div>
+        <div className="fixed bottom-0 right-0 z-50">
+          <MiniWindows />
+        </div>
       </section>
     </main>
   );

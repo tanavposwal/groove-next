@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import RecoilContextProvider from "@/components/RecoilConetextProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "groove",
@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " dark"}><RecoilContextProvider>{children}</RecoilContextProvider></body>
+      <body className={font.className + " light"}>
+        <RecoilContextProvider>{children}</RecoilContextProvider>
+      </body>
     </html>
   );
 }
