@@ -23,6 +23,10 @@ export default function MiniWindows() {
       playerRef.current.loadVideoById(ytid);
       playerRef.current.playVideo();
     }
+    // pause if same video is played again
+    if (playerRef.current) {
+      playerRef.current.pauseVideo();
+    }
   }, [ytid]);
 
   const opts = {
@@ -37,7 +41,11 @@ export default function MiniWindows() {
     <div className="rounded-t-lg md:rounded-lg border overflow-hidden flex flex-col items-center justify-center h-fit shadow-2xl">
       {/* for playing playlist */}
       {/* https://www.youtube.com/embed/VIDEO_ID_1?playlist=VIDEO_ID_2,VIDEO_ID_3,VIDEO_ID_4&autoplay=1 */}
-      <div className={"md:flex transition-transform ease-in-out md:translate-y-0 opacity-100 " + (open ? 'translate-y-0 opacity-100' : 'translate-y-full h-0')}>
+      <div
+        className={
+          "md:flex transition-transform ease-in-out md:translate-y-0 opacity-100 " +
+          (open ? "translate-y-0 opacity-100" : "translate-y-full h-0")
+        }>
         <YouTube videoId={ytid} opts={opts} onReady={onReady} />
       </div>
       <div className="flex md:hidden bg-background justify-end items-center w-full z-10">
@@ -47,8 +55,7 @@ export default function MiniWindows() {
           onClick={() => {
             setOpen(!open);
           }}
-          className="scale-75"
-        >
+          className="scale-75">
           {open ? <Minimize2 /> : <Maximize2 />}
         </Button>
       </div>

@@ -1,5 +1,6 @@
 import { auth, signIn, signOut } from "@/auth";
 import { Button } from "./ui/button";
+import UserAvatar from "./UserAvatar";
 
 export default async function Navbar() {
   const session = await auth();
@@ -9,15 +10,16 @@ export default async function Navbar() {
       <h2 className="text-2xl font-extrabold">groove</h2>
       {session?.user ? (
         <div className="flex gap-2 items-center">
-          <img className="rounded-full h-9" src={session.user.image!} />
+          <UserAvatar src={session.user.image!} />
           <form
             className="sm:flex hidden"
             action={async () => {
               "use server";
               await signOut();
-            }}
-          >
-            <Button type="submit" variant="ghost">Sign out</Button>
+            }}>
+            <Button type="submit" variant="outline">
+              Sign out
+            </Button>
           </form>
         </div>
       ) : (
@@ -26,8 +28,7 @@ export default async function Navbar() {
             action={async () => {
               "use server";
               await signIn();
-            }}
-          >
+            }}>
             <Button type="submit">Sign in</Button>
           </form>
         </div>

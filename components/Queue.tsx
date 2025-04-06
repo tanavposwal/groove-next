@@ -12,7 +12,7 @@ export default async function Queue() {
   });
 
   return (
-    <div className="border rounded-md shadow p-4 gap-3 flex flex-col ">
+    <div className="border rounded-md shadow p-4 gap-3 flex flex-col">
       <div className="flex justify-between border-b pb-3 mb-1 items-center">
         <h3 className="text-xl font-bold">Queue</h3>
         <div className="flex gap-2">
@@ -27,9 +27,14 @@ export default async function Queue() {
       <ul className="flex flex-col gap-3 w-full">
         {queue.map((song) => (
           <li className="flex sm:h-28 h-20" key={song.id}>
-            <img src={song.thumbnail} className="rounded-md border h-full aspect-video" />
+            <img
+              src={song.thumbnail}
+              className="rounded-md border h-full aspect-video"
+            />
             <div className="ml-3 flex flex-col items-start sm:gap-1 gap-0 justify-between">
-              <h4 className="sm:text-lg sm:font-semibold text-xs">{song.title}</h4>
+              <h4 className="sm:text-lg sm:font-semibold text-xs h-36 w-full whitespace-pre-wrap truncate select-none">
+                {song.title}
+              </h4>
               <Player id={song.ytid} userId={session?.user?.id!} />
             </div>
           </li>

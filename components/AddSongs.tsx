@@ -35,8 +35,7 @@ export default function Adder({ userID }: { userID: string }) {
           size="icon"
           onClick={() => {
             setOpen(!open);
-          }}
-        >
+          }}>
           <ChevronUpIcon
             className={
               (open ? "rotate-180" : "rotate-0") +
@@ -49,27 +48,31 @@ export default function Adder({ userID }: { userID: string }) {
         <div>
           <div>
             <form className="flex gap-2" action={addSongAction}>
-              <Input
-                placeholder="Paste yt link here"
-                value={url!}
-                name="url"
-                onChange={(e) => setUrl(e.target.value)}
-              />
+              <div className="relative flex-1">
+                <Input
+                  placeholder="Paste yt link here"
+                  value={url!}
+                  name="url"
+                  onChange={(e) => setUrl(e.target.value)}
+                />
+                {url && (
+                  <div className="aspect-auto absolute top-0 right-0 bottom-0 z-50">
+                    <img
+                      className="w-full h-full object-contain"
+                      src={`https://img.youtube.com/vi/${getYouTubeVideoID(
+                        url
+                      )}/hqdefault.jpg`}
+                      alt=""
+                    />
+                  </div>
+                )}
+              </div>
               <input type="text" defaultValue={userID} hidden name="userID" />
-              <Button type="submit">Add to Queue</Button>
+              <Button type="submit" onClick={() => setOpen(false)}>
+                Add to Queue
+              </Button>
             </form>
           </div>
-          {url && (
-            <div className="rounded-lg overflow-hidden w-fit border">
-              <img
-                className="h-40"
-                src={`https://img.youtube.com/vi/${getYouTubeVideoID(
-                  url
-                )}/hqdefault.jpg`}
-                alt=""
-              />
-            </div>
-          )}
         </div>
       )}
     </div>

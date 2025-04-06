@@ -24,7 +24,7 @@ export default function DeleteButton({
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" type="submit">
-                <Trash2 className="scale-75 stroke-2 opacity-70 hover:opacity-100" />
+                <Trash2 size={15} />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Remove from queue</TooltipContent>

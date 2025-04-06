@@ -3,7 +3,7 @@
 import { Button } from "./ui/button";
 import { useRecoilState } from "recoil";
 import { idState } from "../state/state";
-import { ArrowBigDown, ArrowBigUp } from "lucide-react";
+import { ArrowBigDown, ArrowBigUp, PauseIcon, PlayIcon } from "lucide-react";
 import DeleteButton from "./DeleteButton";
 
 export default function Player({ id, userId }: { id: string; userId: string }) {
@@ -12,19 +12,22 @@ export default function Player({ id, userId }: { id: string; userId: string }) {
     <div className="flex gap-2 items-center">
       <Button
         variant="outline"
-        size="sm"
+        size="icon"
         onClick={() => {
           setYtId(id);
         }}
-        className={`${id == ytid && "bg-white text-black"}`}
-      >
-        {id == ytid ? "Playing" : "Play"}
+        className={`${id == ytid && "bg-white text-black"}`}>
+        {id == ytid ? (
+          <PauseIcon size={20} className="stroke-none fill-current" />
+        ) : (
+          <PlayIcon size={20} className="stroke-none fill-current" />
+        )}
       </Button>
       <Button variant="ghost" size="icon">
-        <ArrowBigUp className="scale-90 stroke-2 opacity-70 hover:opacity-100" />
+        <ArrowBigUp size={20} />
       </Button>
       <Button variant="ghost" size="icon" type="submit">
-        <ArrowBigDown className="scale-90 stroke-2 opacity-70 hover:opacity-100" />
+        <ArrowBigDown size={20} />
       </Button>
       <DeleteButton id={id} userId={userId} />
     </div>
