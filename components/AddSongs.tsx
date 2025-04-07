@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { addSongAction } from "@/actions/addsong";
-import { ChevronUpIcon, PlayCircle, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 function getYouTubeVideoID(url: string): string | null {
   const regex =
@@ -26,8 +26,8 @@ export default function Adder({ userID }: { userID: string }) {
 
   return (
     <div>
-      <h3 className="text-md font-bold">Add to Queue</h3>
-      <div className="h-24 w-full flex items-center justify-center my-2">
+      <h3 className="text-md font-bold py-4">Add to Queue</h3>
+      <div className="h-24 w-full flex items-center justify-center my-2 border rounded">
         {url && (
           <div className="aspect-auto h-full w-fit">
             <img

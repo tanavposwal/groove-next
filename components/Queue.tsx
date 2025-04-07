@@ -44,7 +44,7 @@ export default async function Queue() {
           <li className="flex h-20" key={song.id}>
             <img
               src={song.thumbnail}
-              className="rounded-md border h-full aspect-video"
+              className="rounded-xl shadow-md h-full aspect-video"
             />
             <div className="ml-3 flex flex-col items-start sm:gap-1 gap-0 justify-between">
               <h4 className="sm:text-sm text-xs h-36 w-full whitespace-pre-wrap truncate select-none">
